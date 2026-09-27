@@ -1,19 +1,25 @@
 # Koç Temizlik — web sitesi demosu
 
 Gerçek müşteri için hazırlanan **Standart paket** demosu (Hakan Bey, Koç Temizlik).
-Tek sayfa, Bootstrap 5.3 CDN + vanilla JS, derleme adımı yok.
+**Çok sayfalı yapı** (3 sayfa), Bootstrap 5.3 CDN + vanilla JS, derleme adımı yok.
 
 ```bash
 python3 -m http.server 8110   # http://localhost:8110
 ```
 
+## Sayfalar
+| Dosya | Ne var içinde |
+| --- | --- |
+| `index.html` | Hero + önce/sonra sürgüsü, 6 hizmetin özet kartları (link → hizmetler.html), kısa "Neden biz", iki sayfaya yönlendiren büyük kartlar, kısa iletişim şeridi |
+| `hizmetler.html` | **Filtrelenebilir 6 hizmet** (Tümü / İnşaat sonrası / Ev / İş yeri / Apartman), her kartta "neler dahil" listesi ve hizmet adıyla hazır WhatsApp mesajı |
+| `hakkimizda.html` | Neden biz · Nasıl çalışır (3 adım) + hizmet ilçeleri · Yorum şeridi (**örnek yorumlar**) · SSS · İletişim + harita |
+
+Navbar/footer üç sayfada da birebir aynı — menü değişirse hepsini güncelle,
+kontrol: `grep -c 'nav-item' *.html` (hepsinde aynı sayı çıkmalı).
+
 ## İçerik
-- Hero + önce/sonra sürgüsü (fotoğrafsız, CSS desen)
-- Filtrelenebilir 6 hizmet (Tümü / İnşaat sonrası / Ev / İş yeri / Apartman),
-  her kartta hizmet adıyla hazır WhatsApp mesajı
-- Neden biz · Nasıl çalışır (3 adım) · Hizmet ilçeleri
-- Yorum şeridi (**örnek yorumlar**) · SSS · İletişim + harita
-- SEO: OG/Twitter kartı, JSON-LD (LocalBusiness), robots, sitemap
+- SEO: her sayfada benzersiz title/description/OG/Twitter kartı, canonical,
+  JSON-LD (LocalBusiness, sadece `index.html`'de), robots, sitemap (3 sayfa)
 
 ## İletişim bilgileri
 Gerçek numara kullanıldı: **0538 408 76 86** (`tel:+905384087686`, `wa.me/905384087686`), Instagram `@koctemizlik`.

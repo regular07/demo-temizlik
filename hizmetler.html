@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hizmetlerimiz | Koç Temizlik — Antalya</title>
+  <meta name="description" content="Koç Temizlik hizmetleri: inşaat sonrası daire ve merdiven temizliği, ev, ofis, dükkan ve apartman merdiven temizliği. Her hizmet için kapsam ve WhatsApp'tan teklif alma." />
+  <meta name="keywords" content="inşaat sonrası temizlik antalya, ev temizliği antalya, ofis temizliği antalya, apartman merdiven temizliği, dükkan temizliği antalya" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Koç Temizlik" />
+  <link rel="canonical" href="https://regular07.github.io/demo-temizlik/hizmetler.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Koç Temizlik" />
+  <meta property="og:title" content="Hizmetlerimiz | Koç Temizlik" />
+  <meta property="og:description" content="İnşaat sonrası, ev, ofis, dükkan ve apartman merdiven temizliği hizmetlerimizin tamamı ve kapsamları." />
+  <meta property="og:image" content="https://regular07.github.io/demo-temizlik/assets/img/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Koç Temizlik hizmetleri" />
+  <meta property="og:url" content="https://regular07.github.io/demo-temizlik/hizmetler.html" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hizmetlerimiz | Koç Temizlik" />
+  <meta name="twitter:description" content="İnşaat sonrası, ev, ofis, dükkan ve apartman merdiven temizliği." />
+  <meta name="twitter:image" content="https://regular07.github.io/demo-temizlik/assets/img/og.jpg" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%233b2fc9'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%23ffffff' font-family='Arial,sans-serif' font-weight='800'%3EK%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=4" />
+</head>
+<body>
+
+  <!-- ÜST MENÜ — index.html ile birebir aynı, sadece "active" burada -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="ustMenu" aria-label="Ana menü">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <span class="marka-isaret" aria-hidden="true">K</span>
+        <span class="marka-yazi">Koç <strong>Temizlik</strong></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Menüyü aç">
+        <i class="bi bi-list"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="hizmetler.html">Hizmetler</a></li>
+          <li class="nav-item"><a class="nav-link" href="hakkimizda.html">Hakkımızda</a></li>
+          <li class="nav-item ms-lg-2"><a class="btn btn-marka" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20temizlik%20i%C3%A7in%20fiyat%20almak%20istiyorum.">Teklif Al</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Sayfa başlığı — kısa hero, tek h1 -->
+    <section class="sayfa-hero">
+      <div class="container text-center">
+        <span class="ust-etiket"><i class="bi bi-list-check"></i> Hizmetlerimiz</span>
+        <h1>Her işin kapsamı, tek bakışta net</h1>
+        <p>Kategori seçin, size uyan hizmeti görün. Her hizmet için WhatsApp'tan fotoğraf gönderip fiyat alabilirsiniz.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         HİZMETLER — filtrelenebilir liste (Standart paketin vitrini)
+         Her kartın butonu WhatsApp'a o hizmetin adıyla hazır mesaj açar.
+         ============================================================ -->
+    <section class="bolum" id="hizmetler">
+      <div class="container">
+        <div class="filtreler" role="group" aria-label="Hizmet filtreleri">
+          <button class="filtre aktif" data-filtre="hepsi">Tümü</button>
+          <button class="filtre" data-filtre="insaat">İnşaat sonrası</button>
+          <button class="filtre" data-filtre="ev">Ev</button>
+          <button class="filtre" data-filtre="isyeri">İş yeri</button>
+          <button class="filtre" data-filtre="apartman">Apartman</button>
+        </div>
+
+        <div class="row g-4" id="hizmetListesi">
+          <!-- Kart kalıbı: data-kategori filtre ile eşleşir (birden çok olabilir, boşlukla) -->
+          <div class="col-md-6 col-lg-4 hizmet" id="hizmet-insaat-daire" data-kategori="insaat ev">
+            <article class="hizmet-kart">
+              <div class="hizmet-ikon"><i class="bi bi-house-gear"></i></div>
+              <span class="kategori-rozet">İnşaat sonrası</span>
+              <h3>İnşaat Sonrası Daire Temizliği</h3>
+              <p>Tadilat ya da yeni teslim dairelerde kalan toz, boya, sıva ve harç izlerini temizleyip daireyi oturmaya hazır hale getiriyoruz.</p>
+              <ul class="dahil">
+                <li>Boya, sıva ve harç lekeleri</li>
+                <li>Cam, pencere ve çerçeveler</li>
+                <li>Zemin, kapı ve dolap içleri</li>
+              </ul>
+              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20in%C5%9Faat%20sonras%C4%B1%20daire%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4 hizmet" id="hizmet-insaat-merdiven" data-kategori="insaat apartman">
+            <article class="hizmet-kart">
+              <div class="hizmet-ikon"><i class="bi bi-bricks"></i></div>
+              <span class="kategori-rozet">İnşaat sonrası</span>
+              <h3>İnşaat Sonrası Merdiven Temizliği</h3>
+              <p>Yeni binalarda ya da tadilat sonrası ortak alanlarda merdiven, sahanlık ve girişi yoğun inşaat kirinden arındırıyoruz.</p>
+              <ul class="dahil">
+                <li>Basamak ve sahanlıklar</li>
+                <li>Korkuluk ve küpeşteler</li>
+                <li>Bina girişi ve camlar</li>
+              </ul>
+              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20in%C5%9Faat%20sonras%C4%B1%20merdiven%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4 hizmet" id="hizmet-ev" data-kategori="ev">
+            <article class="hizmet-kart">
+              <div class="hizmet-ikon"><i class="bi bi-house-heart"></i></div>
+              <span class="kategori-rozet">Ev</span>
+              <h3>Ev Temizliği</h3>
+              <p>Taşınma öncesi ya da sonrası, bayram öncesi ya da düzenli — evinizin tamamını baştan sona temizliyoruz.</p>
+              <ul class="dahil">
+                <li>Mutfak ve banyo detaylı</li>
+                <li>Cam ve pencereler</li>
+                <li>Zemin ve toz alma</li>
+              </ul>
+              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20ev%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4 hizmet" id="hizmet-ofis" data-kategori="isyeri">
+            <article class="hizmet-kart">
+              <div class="hizmet-ikon"><i class="bi bi-building"></i></div>
+              <span class="kategori-rozet">İş yeri</span>
+              <h3>Ofis Temizliği</h3>
+              <p>Çalışma düzeninizi bozmadan, size uygun gün ve saatte ofisinizi temiz ve düzenli tutuyoruz.</p>
+              <ul class="dahil">
+                <li>Masa, ekipman ve ortak alanlar</li>
+                <li>Mutfak ve tuvaletler</li>
+                <li>Tek seferlik ya da düzenli</li>
+              </ul>
+              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20ofis%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4 hizmet" id="hizmet-dukkan" data-kategori="isyeri insaat">
+            <article class="hizmet-kart">
+              <div class="hizmet-ikon"><i class="bi bi-shop"></i></div>
+              <span class="kategori-rozet">İş yeri</span>
+              <h3>Dükkan Temizliği</h3>
+              <p>Açılış öncesi, tadilat sonrası ya da dönemsel — dükkanınızı müşteriye hazır hale getiriyoruz.</p>
+              <ul class="dahil">
+                <li>Vitrin ve cephe camları</li>
+                <li>Raf, tezgâh ve zemin</li>
+                <li>Açılış öncesi detaylı temizlik</li>
+              </ul>
+              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20d%C3%BCkkan%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4 hizmet" id="hizmet-apartman" data-kategori="apartman">
+            <article class="hizmet-kart">
+              <div class="hizmet-ikon"><i class="bi bi-building-check"></i></div>
+              <span class="kategori-rozet">Apartman</span>
+              <h3>Apartman Merdiven Temizliği</h3>
+              <p>Apartman ve siteler için haftalık ya da aylık düzenli merdiven temizliği. Yöneticilerle doğrudan çalışıyoruz.</p>
+              <ul class="dahil">
+                <li>Merdiven, sahanlık ve asansör önü</li>
+                <li>Giriş kapısı ve camlar</li>
+                <li>Haftalık / aylık plan</li>
+              </ul>
+              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20apartman%20merdiven%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="text-center mt-5">
+          <p class="mb-3">Aradığınız hizmeti listede bulamadıysanız da yazın, kapsamda olmayan işler için de fiyat verebiliriz.</p>
+          <a href="https://wa.me/905384087686?text=Merhaba%2C%20temizlik%20i%C3%A7in%20fiyat%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-marka btn-lg"><i class="bi bi-whatsapp"></i> WhatsApp'tan Teklif Al</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="alt-bilgi">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <span>© <span id="yil">2026</span> Koç Temizlik. Tüm hakları saklıdır.</span>
+      <span>Web tasarım: <a href="https://regular07.github.io/demosantia/" target="_blank" rel="noopener">Demosentia</a></span>
+    </div>
+  </footer>
+
+  <div class="sabit-butonlar">
+    <a href="tel:+905384087686" class="sabit-ara" aria-label="Telefonla ara"><i class="bi bi-telephone-fill"></i></a>
+    <a href="https://wa.me/905384087686?text=Merhaba%2C%20temizlik%20i%C3%A7in%20fiyat%20almak%20istiyorum." target="_blank" rel="noopener" class="sabit-wa" aria-label="WhatsApp ile yaz"><i class="bi bi-whatsapp"></i></a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js?v=2"></script>
+</body>
+</html>

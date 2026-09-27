@@ -46,11 +46,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
   <!-- Kendi stilimiz Bootstrap'ten SONRA gelir. ?v= cache kırmak için. -->
-  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="style.css?v=4" />
 
   <!-- ============================================================
        SEO — Yapılandırılmış veri (JSON-LD). schema.org'da ayrı bir
        "temizlik şirketi" tipi yok; LocalBusiness + hizmet kataloğu.
+       Sadece ana sayfada — üç sayfa da aynı işletmeyi anlattığı için
+       tekrar etmeye gerek yok.
        ============================================================ -->
   <script type="application/ld+json">
   {
@@ -84,11 +86,13 @@
 <body>
 
   <!-- ============================================================
-       ÜST MENÜ
+       ÜST MENÜ — üç sayfa ortak (index / hizmetler / hakkimizda)
+       Menü değişirse HEPSİNDE değiştir; kontrol:
+       grep -c 'nav-item' *.html   (hepsinde aynı sayı çıkmalı)
        ============================================================ -->
   <nav class="navbar navbar-expand-lg fixed-top" id="ustMenu" aria-label="Ana menü">
     <div class="container">
-      <a class="navbar-brand" href="#ust">
+      <a class="navbar-brand" href="index.html">
         <span class="marka-isaret" aria-hidden="true">K</span>
         <span class="marka-yazi">Koç <strong>Temizlik</strong></span>
       </a>
@@ -97,12 +101,10 @@
       </button>
       <div class="collapse navbar-collapse" id="menu">
         <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="#hizmetler">Hizmetler</a></li>
-          <li class="nav-item"><a class="nav-link" href="#neden-biz">Neden Biz</a></li>
-          <li class="nav-item"><a class="nav-link" href="#nasil">Nasıl Çalışır</a></li>
-          <li class="nav-item"><a class="nav-link" href="#yorumlar">Yorumlar</a></li>
-          <li class="nav-item"><a class="nav-link" href="#sss">SSS</a></li>
-          <li class="nav-item ms-lg-2"><a class="btn btn-marka" href="#iletisim">Teklif Al</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Ana Sayfa</a></li>
+          <li class="nav-item"><a class="nav-link" href="hizmetler.html">Hizmetler</a></li>
+          <li class="nav-item"><a class="nav-link" href="hakkimizda.html">Hakkımızda</a></li>
+          <li class="nav-item ms-lg-2"><a class="btn btn-marka" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20temizlik%20i%C3%A7in%20fiyat%20almak%20istiyorum.">Teklif Al</a></li>
         </ul>
       </div>
     </div>
@@ -161,122 +163,75 @@
     </section>
 
     <!-- ============================================================
-         HİZMETLER — filtrelenebilir liste (Standart paketin vitrini)
-         Her kartın butonu WhatsApp'a o hizmetin adıyla hazır mesaj açar.
+         HİZMETLER — kısa özet kartları, detay hizmetler.html'de
          ============================================================ -->
-    <section class="bolum" id="hizmetler">
+    <section class="bolum" id="hizmetler-ozet">
       <div class="container">
         <div class="bolum-baslik">
           <span class="ust-etiket">Hizmetlerimiz</span>
           <h2>Ne temizlemek istiyorsunuz?</h2>
-          <p>Kategori seçin, size uyan hizmeti görün. Her hizmet için WhatsApp'tan fotoğraf gönderip fiyat alabilirsiniz.</p>
+          <p>Altı hizmetin tamamı, kapsamı ve WhatsApp'tan teklif alma linkiyle <a href="hizmetler.html">Hizmetler sayfasında</a>.</p>
         </div>
 
-        <div class="filtreler" role="group" aria-label="Hizmet filtreleri">
-          <button class="filtre aktif" data-filtre="hepsi">Tümü</button>
-          <button class="filtre" data-filtre="insaat">İnşaat sonrası</button>
-          <button class="filtre" data-filtre="ev">Ev</button>
-          <button class="filtre" data-filtre="isyeri">İş yeri</button>
-          <button class="filtre" data-filtre="apartman">Apartman</button>
-        </div>
-
-        <div class="row g-4" id="hizmetListesi">
-          <!-- Kart kalıbı: data-kategori filtre ile eşleşir (birden çok olabilir, boşlukla) -->
-          <div class="col-md-6 col-lg-4 hizmet" data-kategori="insaat ev">
-            <article class="hizmet-kart">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <a class="hizmet-mini-kart" href="hizmetler.html#hizmet-insaat-daire">
               <div class="hizmet-ikon"><i class="bi bi-house-gear"></i></div>
               <span class="kategori-rozet">İnşaat sonrası</span>
-              <h3>İnşaat Sonrası Daire Temizliği</h3>
-              <p>Tadilat ya da yeni teslim dairelerde kalan toz, boya, sıva ve harç izlerini temizleyip daireyi oturmaya hazır hale getiriyoruz.</p>
-              <ul class="dahil">
-                <li>Boya, sıva ve harç lekeleri</li>
-                <li>Cam, pencere ve çerçeveler</li>
-                <li>Zemin, kapı ve dolap içleri</li>
-              </ul>
-              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20in%C5%9Faat%20sonras%C4%B1%20daire%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
-            </article>
+              <h3>Daire Temizliği</h3>
+              <p>Boya, sıva ve harç izlerinden arındırılmış, oturmaya hazır daire.</p>
+            </a>
           </div>
-
-          <div class="col-md-6 col-lg-4 hizmet" data-kategori="insaat apartman">
-            <article class="hizmet-kart">
+          <div class="col-md-6 col-lg-4">
+            <a class="hizmet-mini-kart" href="hizmetler.html#hizmet-insaat-merdiven">
               <div class="hizmet-ikon"><i class="bi bi-bricks"></i></div>
               <span class="kategori-rozet">İnşaat sonrası</span>
-              <h3>İnşaat Sonrası Merdiven Temizliği</h3>
-              <p>Yeni binalarda ya da tadilat sonrası ortak alanlarda merdiven, sahanlık ve girişi yoğun inşaat kirinden arındırıyoruz.</p>
-              <ul class="dahil">
-                <li>Basamak ve sahanlıklar</li>
-                <li>Korkuluk ve küpeşteler</li>
-                <li>Bina girişi ve camlar</li>
-              </ul>
-              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20in%C5%9Faat%20sonras%C4%B1%20merdiven%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
-            </article>
+              <h3>Merdiven Temizliği</h3>
+              <p>Yeni bina ya da tadilat sonrası ortak alan ve giriş temizliği.</p>
+            </a>
           </div>
-
-          <div class="col-md-6 col-lg-4 hizmet" data-kategori="ev">
-            <article class="hizmet-kart">
+          <div class="col-md-6 col-lg-4">
+            <a class="hizmet-mini-kart" href="hizmetler.html#hizmet-ev">
               <div class="hizmet-ikon"><i class="bi bi-house-heart"></i></div>
               <span class="kategori-rozet">Ev</span>
               <h3>Ev Temizliği</h3>
-              <p>Taşınma öncesi ya da sonrası, bayram öncesi ya da düzenli — evinizin tamamını baştan sona temizliyoruz.</p>
-              <ul class="dahil">
-                <li>Mutfak ve banyo detaylı</li>
-                <li>Cam ve pencereler</li>
-                <li>Zemin ve toz alma</li>
-              </ul>
-              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20ev%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
-            </article>
+              <p>Taşınma öncesi/sonrası ya da düzenli — evin tamamı baştan sona.</p>
+            </a>
           </div>
-
-          <div class="col-md-6 col-lg-4 hizmet" data-kategori="isyeri">
-            <article class="hizmet-kart">
+          <div class="col-md-6 col-lg-4">
+            <a class="hizmet-mini-kart" href="hizmetler.html#hizmet-ofis">
               <div class="hizmet-ikon"><i class="bi bi-building"></i></div>
               <span class="kategori-rozet">İş yeri</span>
               <h3>Ofis Temizliği</h3>
-              <p>Çalışma düzeninizi bozmadan, size uygun gün ve saatte ofisinizi temiz ve düzenli tutuyoruz.</p>
-              <ul class="dahil">
-                <li>Masa, ekipman ve ortak alanlar</li>
-                <li>Mutfak ve tuvaletler</li>
-                <li>Tek seferlik ya da düzenli</li>
-              </ul>
-              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20ofis%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
-            </article>
+              <p>Çalışma düzeninizi bozmadan, size uygun gün ve saatte.</p>
+            </a>
           </div>
-
-          <div class="col-md-6 col-lg-4 hizmet" data-kategori="isyeri insaat">
-            <article class="hizmet-kart">
+          <div class="col-md-6 col-lg-4">
+            <a class="hizmet-mini-kart" href="hizmetler.html#hizmet-dukkan">
               <div class="hizmet-ikon"><i class="bi bi-shop"></i></div>
               <span class="kategori-rozet">İş yeri</span>
               <h3>Dükkan Temizliği</h3>
-              <p>Açılış öncesi, tadilat sonrası ya da dönemsel — dükkanınızı müşteriye hazır hale getiriyoruz.</p>
-              <ul class="dahil">
-                <li>Vitrin ve cephe camları</li>
-                <li>Raf, tezgâh ve zemin</li>
-                <li>Açılış öncesi detaylı temizlik</li>
-              </ul>
-              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20d%C3%BCkkan%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
-            </article>
+              <p>Açılış öncesi ya da dönemsel, müşteriye hazır vitrin ve zemin.</p>
+            </a>
           </div>
-
-          <div class="col-md-6 col-lg-4 hizmet" data-kategori="apartman">
-            <article class="hizmet-kart">
+          <div class="col-md-6 col-lg-4">
+            <a class="hizmet-mini-kart" href="hizmetler.html#hizmet-apartman">
               <div class="hizmet-ikon"><i class="bi bi-building-check"></i></div>
               <span class="kategori-rozet">Apartman</span>
-              <h3>Apartman Merdiven Temizliği</h3>
-              <p>Apartman ve siteler için haftalık ya da aylık düzenli merdiven temizliği. Yöneticilerle doğrudan çalışıyoruz.</p>
-              <ul class="dahil">
-                <li>Merdiven, sahanlık ve asansör önü</li>
-                <li>Giriş kapısı ve camlar</li>
-                <li>Haftalık / aylık plan</li>
-              </ul>
-              <a class="btn btn-kart" target="_blank" rel="noopener" href="https://wa.me/905384087686?text=Merhaba%2C%20apartman%20merdiven%20temizli%C4%9Fi%20i%C3%A7in%20fiyat%20almak%20istiyorum."><i class="bi bi-whatsapp"></i> Bu hizmet için teklif al</a>
-            </article>
+              <h3>Apartman Merdiveni</h3>
+              <p>Haftalık ya da aylık düzenli plan, yöneticiyle doğrudan iletişim.</p>
+            </a>
           </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <a href="hizmetler.html" class="btn btn-cizgi btn-lg"><i class="bi bi-list-check"></i> Tüm hizmetleri ve kapsamlarını gör</a>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         NEDEN BİZ
+         NEDEN BİZ — ana sayfada kısa değer önerisi
          ============================================================ -->
     <section class="bolum bolum-koyu" id="neden-biz">
       <div class="container">
@@ -314,155 +269,49 @@
             </div>
           </div>
         </div>
+        <div class="text-center mt-2">
+          <a href="hakkimizda.html" class="btn btn-cizgi-acik btn-lg mt-4"><i class="bi bi-arrow-right-circle"></i> Bizi daha yakından tanıyın</a>
+        </div>
       </div>
     </section>
 
     <!-- ============================================================
-         NASIL ÇALIŞIR — 3 adım
+         SAYFALARA YÖNLENDİREN KARTLAR
          ============================================================ -->
-    <section class="bolum" id="nasil">
+    <section class="bolum" id="sayfalar">
       <div class="container">
         <div class="bolum-baslik">
-          <span class="ust-etiket">Nasıl çalışır</span>
-          <h2>Üç adımda temiz bir alan</h2>
+          <span class="ust-etiket">Devamını okuyun</span>
+          <h2>Detaylar bu iki sayfada</h2>
         </div>
-        <ol class="adimlar">
-          <li>
-            <span class="adim-no">1</span>
-            <h3>Yazın ya da arayın</h3>
-            <p>Ne temizlenecek, kaç metrekare, hangi ilçe — kısaca anlatın, varsa fotoğraf gönderin.</p>
-          </li>
-          <li>
-            <span class="adim-no">2</span>
-            <h3>Fiyat ve gün belirleyelim</h3>
-            <p>İşe göre fiyatı bildirir, size uygun gün ve saati birlikte planlarız.</p>
-          </li>
-          <li>
-            <span class="adim-no">3</span>
-            <h3>Ekip gelir, teslim eder</h3>
-            <p>Temizlik biter, alanı birlikte kontrol eder, teslim ederiz.</p>
-          </li>
-        </ol>
-
-        <!-- Hizmet bölgeleri: "Antalya merkez ilçeler" -->
-        <div class="bolgeler">
-          <h3><i class="bi bi-geo-alt"></i> Hizmet verdiğimiz ilçeler</h3>
-          <ul>
-            <li>Muratpaşa</li>
-            <li>Kepez</li>
-            <li>Konyaaltı</li>
-            <li>Aksu</li>
-            <li>Döşemealtı</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         YORUMLAR — kaydırmalı liste (kütüphanesiz, scroll-snap)
-         ⚠️ Bunlar ÖRNEK yorumlardır. Gerçek müşteri yorumları gelince
-         değiştirilmeli, değiştirilene kadar "örnek" notu kalmalı.
-         ============================================================ -->
-    <section class="bolum bolum-acik" id="yorumlar">
-      <div class="container">
-        <div class="bolum-baslik d-flex flex-wrap justify-content-between align-items-end gap-3">
-          <div>
-            <span class="ust-etiket">Müşteri yorumları</span>
-            <h2>Temizlikten sonra söylenenler</h2>
-            <p class="demo-not mb-0">Aşağıdakiler örnek yorumlardır; gerçek müşteri yorumlarıyla değiştirilecektir.</p>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <a class="yonlendirme-kart" href="hizmetler.html">
+              <i class="bi bi-list-check"></i>
+              <h3>Hizmetlerimiz</h3>
+              <p>6 hizmetin tamamı, neyin dahil olduğu ve filtrelenebilir liste. İnşaat sonrası, ev, iş yeri, apartman kategorilerine göre bakın.</p>
+              <span class="btn btn-cizgi">Hizmetleri gör <i class="bi bi-arrow-right"></i></span>
+            </a>
           </div>
-          <div class="kaydir-butonlar">
-            <button class="kaydir" data-yon="-1" aria-label="Önceki yorum"><i class="bi bi-arrow-left"></i></button>
-            <button class="kaydir" data-yon="1" aria-label="Sonraki yorum"><i class="bi bi-arrow-right"></i></button>
-          </div>
-        </div>
-        <div class="yorum-serit" id="yorumSerit" tabindex="0" aria-label="Yorumlar">
-          <blockquote class="yorum">
-            <div class="yildiz" aria-label="5 yıldız"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p>"Tadilattan sonra evde her yer toz içindeydi. Ekip bir günde toparladı, camlardaki boya lekelerine kadar temizlendi."</p>
-            <footer>Örnek yorum · Konyaaltı, daire</footer>
-          </blockquote>
-          <blockquote class="yorum">
-            <div class="yildiz" aria-label="5 yıldız"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p>"Apartmanımızın merdivenlerini artık düzenli onlar temizliyor. Ne zaman geleceklerini önceden haber veriyorlar."</p>
-            <footer>Örnek yorum · Muratpaşa, apartman yöneticisi</footer>
-          </blockquote>
-          <blockquote class="yorum">
-            <div class="yildiz" aria-label="5 yıldız"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p>"Dükkanı açmadan önce çağırdık. Vitrin camından rafların arkasına kadar her yer pırıl pırıl oldu."</p>
-            <footer>Örnek yorum · Kepez, dükkan</footer>
-          </blockquote>
-          <blockquote class="yorum">
-            <div class="yildiz" aria-label="5 yıldız"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p>"Fotoğrafları WhatsApp'tan attım, aynı gün fiyat geldi. Ofisi hafta sonu temizlediler, pazartesi işimize kaldığımız yerden devam ettik."</p>
-            <footer>Örnek yorum · Muratpaşa, ofis</footer>
-          </blockquote>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         SSS — Bootstrap akordeon
-         ⚠️ Cevaplar taslaktır, Hakan Bey'le teyit edilecek (README).
-         ============================================================ -->
-    <section class="bolum" id="sss">
-      <div class="container dar">
-        <div class="bolum-baslik text-center">
-          <span class="ust-etiket">Sıkça sorulan sorular</span>
-          <h2>Aklınıza takılanlar</h2>
-        </div>
-        <div class="accordion" id="sssListe">
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#s1" aria-expanded="true" aria-controls="s1">Fiyat nasıl belirleniyor?</button>
-            </h3>
-            <div id="s1" class="accordion-collapse collapse show" data-bs-parent="#sssListe">
-              <div class="accordion-body">Fiyat; alanın büyüklüğüne, kir durumuna (inşaat sonrası mı, düzenli mi) ve işin kapsamına göre belirlenir. Fotoğraf gönderirseniz daha hızlı ve net fiyat verebiliriz.</div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s2" aria-expanded="false" aria-controls="s2">Temizlik malzemesini kim getiriyor?</button>
-            </h3>
-            <div id="s2" class="accordion-collapse collapse" data-bs-parent="#sssListe">
-              <div class="accordion-body">Ekibimiz işe uygun malzeme ve ekipmanla gelir. Özel bir ürün kullanılmasını istiyorsanız önceden haber vermeniz yeterli.</div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s3" aria-expanded="false" aria-controls="s3">İnşaat sonrası temizlik ne kadar sürer?</button>
-            </h3>
-            <div id="s3" class="accordion-collapse collapse" data-bs-parent="#sssListe">
-              <div class="accordion-body">Dairenin büyüklüğüne ve kirin yoğunluğuna göre değişir. Keşif ya da fotoğraf sonrası size tahmini süreyi bildiririz.</div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s4" aria-expanded="false" aria-controls="s4">Hangi ilçelere geliyorsunuz?</button>
-            </h3>
-            <div id="s4" class="accordion-collapse collapse" data-bs-parent="#sssListe">
-              <div class="accordion-body">Antalya merkez ilçeler: Muratpaşa, Kepez, Konyaaltı, Aksu ve Döşemealtı.</div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s5" aria-expanded="false" aria-controls="s5">Apartmanlar için düzenli anlaşma yapıyor musunuz?</button>
-            </h3>
-            <div id="s5" class="accordion-collapse collapse" data-bs-parent="#sssListe">
-              <div class="accordion-body">Evet. Apartman ve siteler için haftalık ya da aylık düzenli merdiven temizliği planı yapıyoruz; yöneticiyle doğrudan çalışıyoruz.</div>
-            </div>
+          <div class="col-md-6">
+            <a class="yonlendirme-kart" href="hakkimizda.html">
+              <i class="bi bi-info-circle"></i>
+              <h3>Hakkımızda</h3>
+              <p>Nasıl çalıştığımız, hizmet verdiğimiz ilçeler, müşteri yorumları, sık sorulan sorular ve iletişim bilgileri.</p>
+              <span class="btn btn-cizgi">Hakkımızda <i class="bi bi-arrow-right"></i></span>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         İLETİŞİM
+         KISA İLETİŞİM ŞERİDİ — tam form/harita hakkimizda.html'de
          ============================================================ -->
-    <section class="bolum bolum-koyu" id="iletisim">
+    <section class="bolum bolum-koyu" id="iletisim-ozet">
       <div class="container">
         <div class="row g-5 align-items-center">
-          <div class="col-lg-6">
+          <div class="col-lg-7">
             <span class="ust-etiket">İletişim</span>
             <h2>Fiyat almak bir mesaj uzaklıkta</h2>
             <p class="iletisim-alt">Ne temizlenecek, hangi ilçede ve yaklaşık kaç metrekare — kısaca yazın, fotoğraf ekleyin, size dönelim.</p>
@@ -472,15 +321,12 @@
               <li><i class="bi bi-instagram"></i> <a href="https://www.instagram.com/koctemizlik/" target="_blank" rel="noopener">@koctemizlik</a></li>
               <li><i class="bi bi-geo-alt-fill"></i> Antalya merkez ilçeler</li>
             </ul>
+          </div>
+          <div class="col-lg-5">
             <div class="d-flex flex-wrap gap-3">
               <a href="https://wa.me/905384087686?text=Merhaba%2C%20temizlik%20i%C3%A7in%20fiyat%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-marka btn-lg"><i class="bi bi-whatsapp"></i> WhatsApp'tan Teklif Al</a>
               <a href="tel:+905384087686" class="btn btn-cizgi-acik btn-lg"><i class="bi bi-telephone-fill"></i> Hemen Ara</a>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <!-- Adres paylaşılmadığı için harita Antalya merkezini gösterir -->
-            <div class="harita">
-              <iframe title="Antalya hizmet bölgesi haritası" src="https://www.google.com/maps?q=Antalya&z=11&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <a href="hakkimizda.html#iletisim" class="btn btn-cizgi-acik btn-lg"><i class="bi bi-geo-alt"></i> Haritayı gör</a>
             </div>
           </div>
         </div>
@@ -505,6 +351,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js?v=1"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>

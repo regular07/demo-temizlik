@@ -137,6 +137,40 @@ a { color: var(--indigo); }
 .surgu:focus-visible + .tutamac, .once-sonra:focus-within .tutamac i { outline: 3px solid var(--limon); }
 .surgu-ipucu { text-align: center; color: var(--gri); font-size: .9rem; margin-top: .8rem; }
 
+/* ---------------- Sayfa başlığı (hizmetler.html / hakkimizda.html) ---------------- */
+.sayfa-hero {
+  padding-block: 7.5rem 3rem;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(59,47,201,.14), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(215,247,91,.3), transparent 40%),
+    var(--lavanta);
+}
+.sayfa-hero h1 { font-size: clamp(1.9rem, 4.4vw, 2.9rem); font-weight: 800; margin-block: .5rem .7rem; }
+.sayfa-hero p { color: var(--gri); font-size: 1.05rem; max-width: 620px; margin-inline: auto; }
+@media (max-width: 767.98px) { .sayfa-hero { padding-block: 6.5rem 2.5rem; } }
+
+/* ---------------- Ana sayfa: hizmet özet kartı (link, filtresiz) ---------------- */
+.hizmet-mini-kart {
+  display: flex; flex-direction: column; height: 100%; padding: 1.6rem; border-radius: 22px;
+  border: 1px solid var(--lavanta-2); background: var(--beyaz); text-decoration: none; color: inherit;
+  transition: transform .25s, box-shadow .25s;
+}
+.hizmet-mini-kart:hover { transform: translateY(-4px); box-shadow: var(--golge); color: inherit; }
+.hizmet-mini-kart h3 { font-size: 1.15rem; font-weight: 700; margin-block: .3rem .4rem; }
+.hizmet-mini-kart p { color: var(--gri); margin: 0; font-size: .95rem; }
+
+/* ---------------- Ana sayfa: sayfalara yönlendiren büyük kartlar ---------------- */
+.yonlendirme-kart {
+  display: flex; flex-direction: column; height: 100%; padding: 2rem; border-radius: 22px;
+  border: 1px solid var(--lavanta-2); background: var(--beyaz); text-decoration: none; color: inherit;
+  transition: transform .25s, box-shadow .25s;
+}
+.yonlendirme-kart:hover { transform: translateY(-4px); box-shadow: var(--golge); color: inherit; }
+.yonlendirme-kart > i { font-size: 2.2rem; color: var(--indigo); margin-bottom: 1rem; }
+.yonlendirme-kart h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: .6rem; }
+.yonlendirme-kart p { color: var(--gri); flex: 1; margin-bottom: 1.2rem; }
+.yonlendirme-kart .btn { align-self: flex-start; pointer-events: none; }
+
 /* ---------------- Hizmet filtresi ve kartlar ---------------- */
 .filtreler { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2rem; }
 .filtre {
